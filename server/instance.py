@@ -6,7 +6,11 @@ class Server():
     def __init__(self):
         self.app = Flask(__name__)
         self.bluePrint = Blueprint('api', __name__, url_prefix='/api')
-        self.api = Api(self.bluePrint, doc='/doc', title='Sample Flask-RestPlus Application')
+        self.api = Api(self.bluePrint,
+                        doc='/doc',
+                        title='Sample Flask-RestPlus Application',
+                        description='A simple book api',
+                        version="1.0")
         self.app.register_blueprint(self.bluePrint)
 
         self.app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
